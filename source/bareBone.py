@@ -21,12 +21,7 @@ questions = [
     "Will this item enhance my productivity or efficiency?",
     "Is this item compatible with what I already own?",
     "Do I have any unresolved doubts about purchasing this item?"
-]
-
-item = input("What you want to buy?: ")
-socreVisible = False
-
-print("Answer these 5 question before you buy " + item)
+] # List of normal question, needs to update with meaningful one which are actually practical to make decision.
 
 def AskSession():
     score = 0
@@ -44,9 +39,9 @@ def AskSession():
 
 def Conclusion(score):
     if score >= 4:
-        print("You should buy " + item)
+        #print("You should buy ")
+        status = 'approved'
     elif score < 4:
-        print("Do you really need " + item + ". My calculation says you don't!")
-
-sc_ore = AskSession()
-Conclusion(sc_ore)
+        #print("Do you really need it. My calculation says you don't!")
+        status = 'denied'
+    return status

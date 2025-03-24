@@ -1,2 +1,4 @@
 oldScript.py
 *.pyc
+data.csv
+/deviation
