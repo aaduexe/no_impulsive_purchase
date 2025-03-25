@@ -8,7 +8,7 @@ class DataHandler:
             self.data = pd.DataFrame(columns=['date', 'item', 'status'])
 
     def dataUpdate(self, dict):
-        dict = pd.DataFrame([dict]) #conver the python dict to dataframe first
+        dict = pd.DataFrame([dict]) #convert the python dict to dataframe first
         self.data = pd.concat([self.data, dict], ignore_index= True) #concat new row to the actual dataframe
     
     def saveData(self): # data exporting function, when the user decided to save, or have completed the question and new score is acquired:
