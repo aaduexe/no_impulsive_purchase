@@ -1,10 +1,10 @@
 from datetime import date
 
-def newItem():
+def newItem() -> dict:
     item = input("What item are you looking to buy?\n")
     new_row = {
-        'date' : date.today(),
-        'wish' : item,
-        'status' : 'waiting'
+        'Date' : date.today(),
+        'Wish' : item,
+        'Status' : 'waiting'
     }
     return new_row

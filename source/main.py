@@ -8,8 +8,8 @@ while True:
     table = DataHandler()
     initialization = input("Do you want to add new item or revisit item from the list?\nInput 'A' to Add Item | Input 'R' to Revisit item | Input 'Q' to Quit\n")
     if initialization.lower() == 'a':
-        newItem = newItem()
-        table.dataUpdate(newItem)
+        newWish = newItem()
+        table.dataUpdate(newWish)
         table.saveData()
         userInput1 = input(" Your item is added.\nInput 'R' to Re-run the prompts | Input 'Q' to Quit\n")
         if userInput1.lower() == 'r':
@@ -17,12 +17,12 @@ while True:
         elif userInput1.lower() == 'q':
             break
         else:
-            print('Your itme is succesfullu added. No valid input, prompts restarted.')
+            print('Your item was succesfully added. No valid input, prompts restarted.')
     elif initialization.lower() == 'r':
         print(table.data)
         desiredItem_key = input("Type name of item you want to buy.\n")
 
-        dateRec = table.data.loc[table.data['wish'] == desiredItem_key, 'date'].values[0]
+        dateRec = table.data.loc[table.data['Wish'] == desiredItem_key, 'Date'].values[0]
         days = (date.today() - datetime.strptime(str(dateRec), "%Y-%m-%d").date()).days
 
         if days > 29:
