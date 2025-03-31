@@ -22,7 +22,7 @@ while True:
         print(table.data)
         desiredItem_key = input("Type name of item you want to buy.\n")
 
-        dateRec = table.data.loc[table.data['item'] == desiredItem_key, 'date'].values[0]
+        dateRec = table.data.loc[table.data['wish'] == desiredItem_key, 'date'].values[0]
         days = (date.today() - datetime.strptime(str(dateRec), "%Y-%m-%d").date()).days
 
         if days > 29:

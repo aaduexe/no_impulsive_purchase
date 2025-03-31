@@ -30,7 +30,7 @@ def AskSession():
         print(question)
         answer = input("Yes or No: ")
         if answer.lower() == "yes":
-            score += 1
+            score += 2
         elif answer.lower() == "no":
             score -= 1
         else:
@@ -38,10 +38,10 @@ def AskSession():
     return score
 
 def Conclusion(score):
-    if score >= 4:
+    if score >= 6:
         #print("You should buy ")
         status = 'approved'
-    elif score < 4:
+    elif score < 6:
         #print("Do you really need it. My calculation says you don't!")
         status = 'denied'
     return status
