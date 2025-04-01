@@ -4,13 +4,15 @@ import bareBone as bb
 from datetime import date
 from datetime import datetime
 
+# Figure out this mess on your own. It's pretty basic
+
 while True:
     table = DataHandler()
     initialization = input("Do you want to add new item or revisit item from the list?\nInput 'A' to Add Item | Input 'R' to Revisit item | Input 'Q' to Quit\n")
     if initialization.lower() == 'a':
         newWish = newItem()
-        table.dataUpdate(newWish)
-        table.saveData()
+        table.add_entry(newWish)
+        table.save_to_csv()
         userInput1 = input(" Your item is added.\nInput 'R' to Re-run the prompts | Input 'Q' to Quit\n")
         if userInput1.lower() == 'r':
             pass
@@ -28,8 +30,8 @@ while True:
         if days > 29:
             questionScore = bb.AskSession()
             status_value = bb.Conclusion(questionScore)
-            table.statusUpdate(desiredItem_key, status_value)
-            table.saveData()
+            table.update_status(desiredItem_key, status_value)
+            table.save_to_csv()
             print("The status of",desiredItem_key,"is updated to",status_value,"as per the answers.")
         else:
             if days == 1:

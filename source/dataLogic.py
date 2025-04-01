@@ -2,25 +2,44 @@ import pandas as pd
 import os
 
 class DataHandler:
-    def __init__(self): # As of now, the app needs to load data everytime so--
-        try: # If data already exists, then the data will be loaded.
-            self.data = pd.read_csv("data/wishes.csv")
-        except: # otherwise, the dataframe will be created. !It does not export the data.
+    def __init__(self):
+        """
+        Initializes the DataHandler class.
+        Loads existing data if available; otherwise, creates an empty DataFrame.
+        """
+        self.file_path = "data/wishes.csv"
+        
+        if os.path.exists(self.file_path):
+            self.data = pd.read_csv(self.file_path)
+        else:
             self.data = pd.DataFrame(columns=['Date', 'Wish', 'Status'])
 
-    def dataUpdate(self, dict: dict) -> None:
-        dict = pd.DataFrame([dict]) #convert the python dict to dataframe first
-        self.data = pd.concat([self.data, dict], ignore_index= True) #concat new row to the actual dataframe
-    
-    def saveData(self) -> None: # data exporting function, when the user decided to save, or have completed the question and new score is acquired:
-        try: # Check if direcory exists
-            os.makedirs('data')
-        except:
-            ...
+    def add_entry(self, entry: dict) -> None:
+        """
+        Adds a new entry to the DataFrame.
         
-        self.data.to_csv("data/wishes.csv", index= False)
-        # it does not need to return anything, only parameter needed is to give it the dataframe.
+        Args:
+            entry (dict): Dictionary containing 'Date', 'Wish', and 'Status'.
+        """
+        new_row = pd.DataFrame([entry])  # Convert dict to DataFrame
+        self.data = pd.concat([self.data, new_row], ignore_index=True)
 
-    def statusUpdate(self, key: str, value: str) -> None:
-        self.data.loc[self.data['Wish'] == key, ['Status']] = value
+    def save_to_csv(self) -> None:
+        """
+        Saves the current DataFrame to a CSV file.
+        Creates the directory if it does not exist.
+        """
+        if not os.path.exists('data'):
+            os.makedirs('data')
+        
+        self.data.to_csv(self.file_path, index=False)
 
+    def update_status(self, wish: str, status: str) -> None:
+        """
+        Updates the status of a wish in the DataFrame.
+        
+        Args:
+            wish (str): The wish to update.
+            status (str): The new status to be set.
+        """
+        self.data.loc[self.data['Wish'] == wish, 'Status'] = status

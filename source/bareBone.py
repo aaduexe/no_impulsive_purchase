@@ -1,5 +1,6 @@
 import random
 
+# List of decision making question
 questions = [
     {
         "question": "Did not having this item cause any inconvenience in the past month?",
@@ -95,8 +96,14 @@ questions = [
 ]
 
 def AskSession() -> int:
+    """
+    Runs the questionnaire by asking a random selection of 5 questions.
+    Returns the total score based on the user's answers.
+    """
+
     score = 0
     fv_questions: list[dict] = random.sample(questions, 5)
+
     for question in fv_questions:
         print(question['question'])
         print('Note:', question['note'])
@@ -104,9 +111,13 @@ def AskSession() -> int:
         answer = input("Yes or No: ")
         acceptedInput = ['yes', 'no']
         proceed = False
+
+        # Ensure the user provides valid input
         for ans in acceptedInput:
             if answer.lower() == ans:
                 proceed = True
+
+        # Check if the answer matches the expected response
         if proceed:
             if answer.lower() == question['expected_answer'].lower():
                 score += int(question['score'])
@@ -115,6 +126,10 @@ def AskSession() -> int:
     return score
 
 def Conclusion(score: int) -> str:
+    """
+    Evaluates the user's purchase decision based on the questionnaire score.
+    Returns 'approved' if the score is 4 or above, otherwise 'denied'.
+    """
     if score >= 4:
         #print("You should buy ")
         status = 'approved'
