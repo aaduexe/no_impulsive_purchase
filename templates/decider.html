@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<title>Buying Decision!</title>
+<body>
+    <h2>Select the item</h2>
+    <select>
+      {% for item in items %}
+        <option>{{ item }}</option>
+      {% endfor %}
+    </select>
+</body>
+</html>
