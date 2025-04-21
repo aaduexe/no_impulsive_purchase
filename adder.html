@@ -1,12 +1,23 @@
 <!DOCTYPE html>
 <title>Buying Decision!</title>
+<link rel="stylesheet" href="style.css">
 <body>
-    <h2>What you want to buy?</h2>
-    <input type="text" id="itemInput" placeholder="Name of your wish" />
-    <button onclick="handleClick()">Add Wish</button>
-
-    <p id="message" style="display: none; margin-top: 20px;"></p>
-
+    <div class="container">
+        <div>
+            <h2>What you want to buy?</h2>
+        </div>
+        <div>
+            <input type="text" id="itemInput" placeholder="Name of your wish" />
+        </div>
+        <div>
+            <p id="message" style="display: none; margin-top: 20px;"></p>
+        </div>
+    </div>
+    <div class="buttons">
+        <div>
+            <button onclick="handleClick()">Add Wish</button>
+        </div>
+    </div>
     <script>
         function handleClick() {
             const input = document.getElementById("itemInput");
