@@ -1,0 +1,39 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#viewer {
+    width: 856px;
+    height: 397px;
+
+    border: none;
+    border-radius: 10px;
+
+    background-color: #FADA7A;
+}
+
+button {
+    background-color: #B1C29E;
+    width: 272px;
+    height: 80px;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 30px;
+}
+
+button:hover {
+    transform: scale(1.05);
+    transition: transform 0.2s ease-in-out;
+    background-color: #F0A04B;
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8);
+    box-shadow: inset;
+}
