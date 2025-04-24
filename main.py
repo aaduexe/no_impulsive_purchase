@@ -22,5 +22,9 @@ def dataDropDown():
 
     return render_template("decider.html", items=column_data)
 
+@app.route("/quest")
+def questions():
+    return render_template("questionaire.html")
+
 if __name__ == "__main__":
     app.run(debug=True)
